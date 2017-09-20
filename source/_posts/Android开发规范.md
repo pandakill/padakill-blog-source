@@ -216,3 +216,121 @@ public class PDCityDataCenter {
 ### 设置全局变量和静态变量以m、s开头
 ![图4 设置全局变量和静态变量以m、s开头](http://owl21dcva.bkt.clouddn.com//img/%E8%AE%BE%E7%BD%AEjava%E5%8F%98%E9%87%8F%E5%89%8D%E7%BC%80.png)
 
+# 资源文件命名规范
+
+## 资源文件命名规范的重要性
+资源文件命名以小写字母+下划线组成，名字不怕长就怕太简略，要尽可能一眼能看出该资源文件是用来干什么的，我改怎么去找到这个文件？
+鉴于Android开发肯定会存在很多很多的资源，所以最好能够一个一个模块的放好、并且有明显的命名去命名，方便自己也方便他人在二次开发、
+bug修复和后续迭代等操作中能够更快的定位到。这个步骤很繁琐，要做好不简单，见微知著，细心耐心！加油吧！！
+
+其实资源文件的命名很难去做一个比较好而系统的规范，这就要求平时开发的时候开发人员能够自觉地去探索和建立一个比较好的、适合项目发展的开发方式。
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+        1. 在命名的时候，最好能以一个 xxxx start 开头 然后以 xxxx end 结束，表明一个模块的资源文件的区块
+        2. 同个模块的资源文件，最好能以一个统一的前缀，然后再加以后面的详细描述，这样比较能清晰而且也能减少出现类似资源文件的混淆
+        3. 尽量多的在名字里表明用处，多点解释能够更好的让其他人明白你的用途，总比别人去猜或者一定要进来看你的资源文件然后去理解好的多吧
+    -->
+
+    <!-- 网络错误提示 start -->
+    <string name="network_tips_error">哎呀，网络有点问题</string>
+    <string name="network_tips_im_error">当前网络不可用，请检查你的网络设置</string>
+    <string name="network_tips_unknown_error">未知错误</string>
+    <!-- 网络错误提示 end-->
+
+    <!-- tabhost栏标题 start -->
+    <string name="tabhost_title_home">首页</string>
+    <string name="tabhost_title_discovery">精选</string>
+    <string name="tabhost_title_appointment">预约</string>
+    <string name="tabhost_title_my">我的</string>
+    <!-- tabhost栏标题 end -->
+
+    <!-- 页面标题 start -->
+    <string name="page_title_index">首页</string>
+    <string name="page_title_appointment">预约</string>
+    <string name="page_title_my_wallet">我的钱包</string>
+    <string name="page_title_my_artisan_detail">技师详情</string>
+    <string name="page_title_my_product_detail">作品详情</string>
+    <!-- 页面标题 end -->
+</resources>
+```
+
+
+又例如style文件的命名示例：
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>  
+<resources>  
+   
+<!--  
+    1. 如果是有存在父子关系的，可以将这几个样式放在附近一起，并且命名以同样的前缀命名  
+    2. 其他的参考string文件的命名  
+    3. 为什么这里不需要start和end？因为string是单标签的，基本上所有的都是以<string></string>来定义，而style文件一个区块已经用<style></style>来帮助分区块了，所以可以不用start和end来帮助标记。  
+-->  
+  
+    <!-- 订单确认页的textview样式 -->  
+    <style name="order_submit_text_style">  
+        <item name="android:layout_width">match_parent</item>  
+        <item name="android:layout_height">48dp</item>  
+        <item name="android:textColor">@color/Black</item>  
+        <item name="android:textSize">14sp</item>  
+        <item name="android:paddingLeft">15dp</item>  
+        <item name="android:layout_marginLeft">8dp</item>  
+        <item name="android:layout_marginRight">8dp</item>  
+    </style>  
+  
+    <!-- 全局的分隔线的样式 -->  
+    <style name="underline_common_view_sytle">  
+        <item name="android:layout_width">match_parent</item>  
+        <item name="android:layout_height">1px</item>  
+        <item name="android:layout_marginLeft">12dp</item>  
+        <item name="android:background">@color/Gray_Line</item>  
+    </style>  
+  
+    <!-- 支付页的分割线样式 -->  
+    <style name="underline_pay_view_style">  
+        <item name="android:layout_width">match_parent</item>  
+        <item name="android:layout_height">1px</item>  
+        <item name="android:background">@color/Gray_Line</item>  
+    </style>  
+  
+    <!-- 占满横屏的分割线样式 -->  
+    <style name="underline_match_parent" parent="order_underline_view_sytle">  
+        <item name="android:layout_marginRight">0dp</item>  
+        <item name="android:layout_marginLeft">0dp</item>  
+    </style>  
+  
+    <!-- 支付页的每个栏目的样式 -->  
+    <style name="pay_bar_style">  
+        <item name="android:layout_width">match_parent</item>  
+        <item name="android:layout_height">44dp</item>  
+        <item name="android:background">@drawable/listview_item_city_selector</item>  
+    </style>  
+  
+    <!-- 支付页的的样式 -->  
+    <style name="pay_text_style">  
+        <item name="android:layout_width">match_parent</item>  
+        <item name="android:layout_height">44dp</item>  
+        <item name="android:background">@color/Black</item>  
+    </style>  
+  
+    <!-- 支付页标题栏的text属性 -->  
+    <style name="pay_textbar_text_small_style">  
+        <item name="android:layout_width">wrap_content</item>  
+        <item name="android:layout_height">wrap_content</item>  
+        <item name="android:textColor">@color/theme_color_666666</item>  
+        <item name="android:singleLine">true</item>  
+        <item name="android:layout_centerVertical">true</item>  
+        <item name="android:textSize">12sp</item>  
+    </style>  
+  
+    <!-- 支付页标题栏的text属性 -->  
+    <style name="pay_textbar_text_small_deep_style" parent="textbar_text_small_style">  
+        <item name="android:textColor">@color/theme_color_333333</item>  
+        <item name="android:textSize">12sp</item>  
+    </style>  
+</resources>  
+```
